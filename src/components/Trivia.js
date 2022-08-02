@@ -52,13 +52,15 @@ export const Trivia = () => {
 	return (
 		<Game>	
 			<Stats>
-				<h5>Level: Easy</h5>
-				<h5>Won: { correctCount}</h5>
-				<h5>Lost: { wrongCount}</h5>
+				<Stat fontColor="lightblue">Level: <span> Easy</span></Stat>
+				<div></div>
+				<Stat fontColor="green">Won: <span> { correctCount}</span></Stat>
+				<div></div>
+				<Stat fontColor="red">Lost: <span> { wrongCount}</span></Stat>
 			</Stats>
 			<GameState>
 				<div>
-					{ currentQuestion && decodeString(currentQuestion?.question) }
+					<Question>{ currentQuestion && decodeString(currentQuestion?.question) }</Question>
 
 					{ currentQuestion ? 
 					<form onSubmit={ judgeResponse }>
@@ -74,8 +76,8 @@ export const Trivia = () => {
 									{decodeString(r)}
 								</label>
 							))}		
-						</Answers>		
 						<button type='submit'>Submit</button>
+						</Answers>		
 					</form>
 					:
 					null
@@ -96,11 +98,36 @@ const GameState = styled.div `
 const Stats = styled.section `
 	width: 100%;
 	display: inline-grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
+	margin-bottom: 2rem;
+`
+const Stat = styled.div `
+	display: flex;
+	justify-content: space-around;
+	color: ${props => props.fontColor};
+`
+const Question = styled.div `
+	margin: 1rem;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+
 `
 const Answers = styled.div `
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	label {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	button {
+		margin-top: 1rem;
+		width: 200px;
+	} 
+		
 `
 // {
 // 	"category": "Science: Computers",

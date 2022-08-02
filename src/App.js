@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { Trivia } from './components/Trivia'
-import { CriteriaForm } from './components/Form'
+// import { CriteriaForm } from './components/Form'
 
 function App() {
   return (
     <TriviaPage>
-			<CriteriaForm />
+			<Heading><h1>Nerd Trivia</h1></Heading>
+			{/* <CriteriaForm /> */}
 			<Trivia />
     </TriviaPage>
   );
@@ -18,8 +19,11 @@ const TriviaPage = styled.main `
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	font-size: calc(10px + 2vmin);
 	color: white;
+`
+const Heading = styled.div `
+	width: 100%;
+	display: flex;
+	justify-content: center;
 `
